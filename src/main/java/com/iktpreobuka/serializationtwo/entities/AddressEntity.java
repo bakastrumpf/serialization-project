@@ -22,7 +22,7 @@ public class AddressEntity {
 	private String country;
 	private String version;
 
-	@JsonBackReference
+	@JsonBackReference // ovo polje ne treba da se serijalizuje
 	private List<UserEntity> users = new ArrayList<UserEntity>();
 
 	public AddressEntity() {
