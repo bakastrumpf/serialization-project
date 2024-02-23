@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.iktpreobuka.serializationtwo.security.Views;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class UserEntity {
@@ -25,10 +27,11 @@ public class UserEntity {
 	private Date dateOfBirth;
 	@JsonView(Views.Admin.class)
 	private String email;
-	@JsonIgnore
+	@JsonIgnore // jer ne želimo da se lozinka IKAD serijalizuje
 	private String password;
 	private Integer version;
 
+	@JoinColumn(name = "address_id")
 	@JsonView(Views.Private.class)
 	@JsonManagedReference
 	private AddressEntity address;
