@@ -22,8 +22,9 @@ import com.iktpreobuka.serializationtwo.security.Views;
 
 @RestController
 @RequestMapping("/users")
-
 public class UserController {
+
+	// public List<UserEntity> users = new ArrayList<UserEntity>();
 	
 	@RequestMapping(method = RequestMethod.POST, path = "")
 	public ResponseEntity<?> createUser(@RequestBody UserRegistryDTO newUser){
