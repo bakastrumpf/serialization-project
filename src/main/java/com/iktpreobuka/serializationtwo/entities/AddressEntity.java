@@ -3,7 +3,6 @@ package com.iktpreobuka.serializationtwo.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.iktpreobuka.serializationtwo.security.Views;
@@ -27,7 +26,6 @@ public class AddressEntity {
 
 	public AddressEntity() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Integer getId() {
