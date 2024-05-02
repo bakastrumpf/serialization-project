@@ -4,24 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.iktpreobuka.serializationtwo.security.Views;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
 
 @Entity
 public class AddressEntity {
 
+	@Id
+	@JsonProperty("ID")
 	@JsonView(Views.Private.class)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
 	@JsonView(Views.Private.class)
 	private String street;
+
 	@JsonView(Views.Private.class)
 	private String city;
+
 	@JsonView(Views.Private.class)
 	private String country;
 	private String version;
 
 	@JsonBackReference // ovo polje ne treba da se serijalizuje
+	@OneToMany(mappedBy = "address", cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	private List<UserEntity> users = new ArrayList<UserEntity>();
 
 	public AddressEntity() {

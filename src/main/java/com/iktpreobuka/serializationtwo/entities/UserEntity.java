@@ -8,32 +8,39 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.iktpreobuka.serializationtwo.security.Views;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
 
 @Entity
 public class UserEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JsonProperty("ID")
 	@JsonView(Views.Public.class)
 	private Integer id;
+
 	@JsonView(Views.Public.class)
 	private String name;
+
 	@JsonView(Views.Admin.class)
 	@JsonFormat(
 			shape = JsonFormat.Shape.STRING,
 			pattern = "dd-MM-yyyy hh:mm:ss")
 	private Date dateOfBirth;
+
 	@JsonView(Views.Admin.class)
 	private String email;
+
 	@JsonIgnore // jer ne želimo da se lozinka IKAD serijalizuje
 	private String password;
+
 	private Integer version;
 
 	@JoinColumn(name = "address_id")
 	@JsonView(Views.Private.class)
 	@JsonManagedReference
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	private AddressEntity address;
 
 	public UserEntity() {
