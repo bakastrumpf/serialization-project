@@ -1,9 +1,18 @@
 {
-"UserEntity":{
-	"name":"nešto",
-	"email":"nesto@nesto.com",
-	"password": "tajnasifra",
-	"username":"user"
+	"UserEntity": {
+		"name": "nešto",
+		"email": "nesto@nesto.com",
+		"password": "tajnasifra",
+		"username": "user"
+	}
 }
-}
+
+//{
+//	"UserDTO": {
+//		"name": "nešto",
+//		"email": "nesto@nesto.com",
+//		"work": "negde"
+//	}
+//}
+
 

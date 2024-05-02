@@ -11,7 +11,6 @@ public class UserRegistryDTO {
 	
 	public UserRegistryDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public UserRegistryDTO(String name, String email) {

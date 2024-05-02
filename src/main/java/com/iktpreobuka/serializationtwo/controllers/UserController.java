@@ -51,16 +51,16 @@ public class UserController {
 				}
 			}
 		// ako tražimo jednog korisnika s ID 3, vratiće nam određenu grešku:
-		// za ostale nepostojeće korisnike vraća poruku o grešci	
+		// za ostale nepostojeće korisnike vraća poruku o grešci
 		//	if (id == 3)
-		//		throw new IOException();
+		//		throw new IOException("Error message. ");
 			return new ResponseEntity<RESTError>(new RESTError(1, 
 					"User not found"), HttpStatus.NOT_FOUND);
 		}catch (Exception e) {
 			//TODO handle exception
 			return new ResponseEntity<RESTError>(new RESTError(2,
-					"While requesting user from DB, an error occured. Error message."
-					+e.getMessage() + ".\n Stack trace: " + e.getStackTrace()), 
+					"While requesting user from DB, an error occurred. Error message: "
+					+e.getMessage() + ".\n Stack trace: " + e.getStackTrace().toString() ),
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}	
 	}
