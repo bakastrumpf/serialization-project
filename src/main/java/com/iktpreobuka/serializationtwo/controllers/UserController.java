@@ -31,7 +31,7 @@ public class UserController {
 		UserEntity user = new UserEntity();
 		user.setEmail(newUser.getEmail());
 		user.setName(newUser.getName());
-		user.setId(3);
+		// user.setId(3);
 		user.setPassword("123");
 		// TODO save user to DB
 		return new ResponseEntity<UserEntity>(user, HttpStatus.CREATED);
